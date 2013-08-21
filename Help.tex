@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage[applemac]{inputenc}
+%\usepackage[danish]{babel}
+%\addto\captionsdanish{\renewcommand*\abstractname{Abstract}}
+\usepackage{amsmath}
+\usepackage{mathptmx}           % Use the Times font.
+\usepackage{graphicx}           % Needed for including graphics.
+\usepackage{url}                % Facility for activating URLs.
+\usepackage[a4paper,margin=1.4cm]{geometry}
+\usepackage{natbib}
+\usepackage{hyperref}
+\bibpunct{(}{)}{;}{a}{,}{,}
+
+\begin{document}
+\vspace{-5cm}
+\author{By \href{mailto:eskild.sf@coderer.com}{Eskild Schroll-Fleischer}\\
+Contact: \href{mailto:eskild.sf@coderer.com}{eskild.sf@coderer.com}}
+\date{\today}
+\title{diskFormatter Help}
+\maketitle
+
+\section{Introduction}
+DiskFormatter is a php script that enables fast and easy formatting (FAT32) of USB drives to.
+The script works by immediately formatting any new drives introduced to the host.
+
+\section{Setup}
+The script is intended to run on a virtual machine running Debian. Running the script through a virtual machine minimizes the risk of virus spreading from the USB drives. The use of a linux OS further mitigates this risk.
+
+\subparagraph{Requirements}
+\begin{itemize}
+\item Host computer with unused USB port
+\item Virtual machine software \\ \url{virtualbox.org}
+\item Debian disk image \\ \url{http://www.debian.org/CD/netinst/}
+\item diskFormatter.php
+\end{itemize}
+
+\subparagraph{Installation}
+\begin{enumerate}
+\item Install VirtualBox on the host machine.
+\item Create a VM and install Debian. \\ The graphical environment is not needed. Make sure to pass through the USB connection to the VM.
+\item Launch the virtual machine and run the following commands in order. \begin{verbatim}$ su
+$ apt-get install php5-cli 
+$ apt-get install dosfstools\end{verbatim}
+The first command will launch the superuser environment. It will ask you for the root password you set during the installation of Debian. The other two commands will install the packages that diskFormatter depends on.
+\item Download diskFormatter.php by running the following commands from the superuser enviornment \begin{verbatim}$ wget http://files.coderer.com/diskFormatter.txt
+$ cp ./diskFormatter.txt ./diskFormatter.php
+$ rm ./diskFormatter.txt
+$ chmod +x diskFormatter.php\end{verbatim}
+The first command will download the script. The second one will rename it. The third one will clean up after the download. The final command will make the script executable.
+\item You can now run the script from the superuser enviornment by passing the following command\begin{verbatim}$ ./diskFormatter.php\end{verbatim} 
+\end{enumerate}
+
+
+\section{Usage}
+To use the script simply run it as stated above. Then insert the USB drives that you wish to format. The script will display a message when it detects a USB drive and when it has finished formatting it.
+
+Be sure not to insert ANY DRIVE that you do NOT wish to format as ALL drives that the script registers will be formatted immediately.
+
+\end{document}
