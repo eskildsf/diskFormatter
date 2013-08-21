@@ -22,7 +22,7 @@ define('sMemcachedKey', 'knownDisks');
 define('sMemcachedIP', '127.0.0.1');
 define('sMemcachedPort', '11211');
 define('sAskBeforeFormatting', FALSE);
-define('sDirToCopyFrom', '/home/eskild/Dropbox/Programmering/USBFormatter/filesToCopy/');
+define('sDirToCopyFrom', './filesToCopy/');
 
 //
 // CLI Specific
